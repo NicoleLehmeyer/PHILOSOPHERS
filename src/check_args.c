@@ -34,13 +34,16 @@ bool	is_all_number(char **argv)
 	return (true);
 }
 
-void	assign_input(t_philodata *philodata, char **argv)
+void	assign_input(t_philodata *philodata, int argc, char **argv)
 {
 	philodata->nbr_of_philos = atoi(argv[1]);
 	philodata->time_to_die = atoi(argv[2]);
 	philodata->time_to_eat = atoi(argv[3]);
 	philodata->time_to_sleep = atoi(argv[4]);
-	philodata->max_eat_occurences = atoi(argv[5]);
+	if (argc == 6)
+		philodata->max_eat_occurences = atoi(argv[5]);
+	else
+		philodata->max_eat_occurences = -1;
 }
 
 bool	is_correct_input(int argc, char **argv)

@@ -14,18 +14,19 @@
 
 int	main(int argc, char **argv)
 {
-	t_philodata	philodata;
+	t_simdata	simdata;
 
 	if (!is_correct_input(argc, argv))
 	{
 		printf("Not going to assign tf bitch\n");
 		return (0);
 	}
-	assign_input(&philodata, argv);
-	printf("Number of philos: %d\n", philodata.nbr_of_philos);
-	printf("Number of philos: %d\n", philodata.time_to_die);
-	printf("Number of philos: %d\n", philodata.time_to_eat);
-	printf("Number of philos: %d\n", philodata.time_to_sleep);
-	printf("Number of philos: %d\n", philodata.max_eat_occurences);
+	assign_input(&simdata, argc, argv);
+	init_philos(&simdata);
+	printf("Number of philos: %d\n", simdata.nbr_of_philos);
+	printf("Number of philos: %d\n", simdata.time_to_die);
+	printf("Number of philos: %d\n", simdata.time_to_eat);
+	printf("Number of philos: %d\n", simdata.time_to_sleep);
+	printf("Number of philos: %d\n", simdata.max_eat_occurences);
 	return (0);
 }
