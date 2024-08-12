@@ -27,14 +27,16 @@ typedef struct	s_simdata
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		max_eat_occurences;
-	t_philo	**philos;
+	//		start sim time
+	t_philo	*philos;
+	//		mutex for printf each event
 }				t_simdata;
 
 typedef struct	s_philo
 {
 	int			id;
 	int			meals_eaten;
-	int			time_since_last_meal;
+	int			time_since_last_meal;	//different data type?
 	pthread_t	thread;
 	pthread_mutex_t	r_fork;
 	pthread_mutex_t	l_fork;

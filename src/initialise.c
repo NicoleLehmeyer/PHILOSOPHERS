@@ -12,6 +12,8 @@
 
 #include "philo.h"
 
+//why a double pointer?? don't need that, change to just one
+
 void    init_philos(t_simdata *simdata)
 {
 	int i;
@@ -41,4 +43,5 @@ void    init_philos(t_simdata *simdata)
 }
 // init the philos
 
-// init the 
+// init the forks
+// the right fork of the last philo should have the same mutex id as the first philosopher's left fork.
