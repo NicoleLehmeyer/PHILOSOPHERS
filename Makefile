@@ -8,6 +8,8 @@ LIBFT_ARCHIVE = include/LIBFT/libft.a
 
 SOURCES = src/main.c \
 	src/check_args.c \
+	src/time.c \
+	src/initialise.c \
 
 OBJECTS = $(SOURCES:src/.c=obj/.o)
 

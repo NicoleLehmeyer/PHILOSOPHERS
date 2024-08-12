@@ -23,10 +23,22 @@ int	main(int argc, char **argv)
 	}
 	assign_input(&simdata, argc, argv);
 	init_philos(&simdata);
-	printf("Number of philos: %d\n", simdata.nbr_of_philos);
-	printf("Number of philos: %d\n", simdata.time_to_die);
-	printf("Number of philos: %d\n", simdata.time_to_eat);
-	printf("Number of philos: %d\n", simdata.time_to_sleep);
-	printf("Number of philos: %d\n", simdata.max_eat_occurences);
+
+	simdata.start_time = get_curr_time();
+	printf("Current time in milliseconds: %lu\n", simdata.start_time);
+	init_philos(&simdata);
+	int i = 0;
+	while (i < simdata.nbr_of_philos)
+	{
+		usleep(1000);
+		simdata.philos[i].time_since_last_meal = get_timestamp(&simdata);
+		printf("Philo[%d] id/mealseaten/timesince: %d, %d, %lu\n", i, simdata.philos[i].id, simdata.philos[i].meals_eaten, simdata.philos[i].time_since_last_meal);
+		i++;
+	}
+	// printf("Number of philos: %d\n", simdata.nbr_of_philos);
+	// printf("Time to die: %d\n", simdata.time_to_die);
+	// printf("Time to eat: %d\n", simdata.time_to_eat);
+	// printf("Time to sleep: %d\n", simdata.time_to_sleep);
+	// printf("Max eat occurences: %d\n", simdata.max_eat_occurences);
 	return (0);
 }

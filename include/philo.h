@@ -14,11 +14,23 @@
 # define PHILO_H
 # include "LIBFT/include/libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdio.h>
 # include <stdbool.h>
 # include <string.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+typedef struct	s_philo
+{
+	int			id;
+	int			meals_eaten;
+	long		time_since_last_meal;
+	pthread_t	thread;
+	pthread_mutex_t	r_fork;
+	pthread_mutex_t	l_fork;
+	
+}				t_philo;
 
 typedef struct	s_simdata
 {
@@ -27,21 +39,10 @@ typedef struct	s_simdata
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		max_eat_occurences;
-	//		start sim time
+	long	start_time;
 	t_philo	*philos;
 	//		mutex for printf each event
 }				t_simdata;
-
-typedef struct	s_philo
-{
-	int			id;
-	int			meals_eaten;
-	int			time_since_last_meal;	//different data type?
-	pthread_t	thread;
-	pthread_mutex_t	r_fork;
-	pthread_mutex_t	l_fork;
-	
-}				t_philo;
 
 // **main.c** //
 int	main(int argc, char **argv);
@@ -54,5 +55,8 @@ bool	is_all_number(char **argv);
 // *initialise.c* //
 void	init_philos(t_simdata *simdata);
 
+// *time.c* //
+long	get_curr_time(void);
+long	get_timestamp(t_simdata *simdata);
 
 #endif
