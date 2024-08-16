@@ -36,6 +36,4 @@ long	get_timestamp(t_simdata *simdata)
 	return (0);
 }*/
 
-// gettime()    --> to mark current time and find difference between that time and another
-
 //comparison between (event time - start sim time in milliseconds) and arg value of time to eat/sleep/die

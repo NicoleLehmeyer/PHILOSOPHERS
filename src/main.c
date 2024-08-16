@@ -12,6 +12,12 @@
 
 #include "philo.h"
 
+void	ft_error(char **err_msg)
+{
+	printf("%s\n", err_msg);
+	exit (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_simdata	simdata;
@@ -27,6 +33,7 @@ int	main(int argc, char **argv)
 	simdata.start_time = get_curr_time();
 	printf("Current time in milliseconds: %lu\n", simdata.start_time);
 	init_philos(&simdata);
+	init_forks(&simdata);
 	int i = 0;
 	while (i < simdata.nbr_of_philos)
 	{

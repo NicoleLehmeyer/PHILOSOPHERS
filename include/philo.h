@@ -26,7 +26,7 @@ typedef struct	s_philo
 	int			id;
 	int			meals_eaten;
 	long		time_since_last_meal;
-	pthread_t	thread;
+	pthread_t	thread_id;
 	pthread_mutex_t	r_fork;
 	pthread_mutex_t	l_fork;
 	
@@ -34,18 +34,20 @@ typedef struct	s_philo
 
 typedef struct	s_simdata
 {
-	int		nbr_of_philos;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		max_eat_occurences;
-	long	start_time;
-	t_philo	*philos;
-	//		mutex for printf each event
+	int				nbr_of_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				max_eat_occurences;
+	long			start_time;
+	t_philo			*philos;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	message;
 }				t_simdata;
 
 // **main.c** //
-int	main(int argc, char **argv);
+void	ft_error(char **err_msg);
+int		main(int argc, char **argv);
 
 // **check_args.c** //	
 bool	is_correct_input(int argc, char **argv);
@@ -54,6 +56,7 @@ bool	is_all_number(char **argv);
 
 // *initialise.c* //
 void	init_philos(t_simdata *simdata);
+void	init_forks(t_simdata *simdata);
 
 // *time.c* //
 long	get_curr_time(void);
