@@ -46,7 +46,7 @@ typedef struct	s_simdata
 }				t_simdata;
 
 // **main.c** //
-void	ft_error(char **err_msg);
+void	ft_error(char *err_msg);
 int		main(int argc, char **argv);
 
 // **check_args.c** //	

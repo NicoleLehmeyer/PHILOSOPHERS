@@ -40,7 +40,7 @@ void	init_forks(t_simdata *simdata)
 	while (i < simdata->nbr_of_philos)
  	{
 		if (pthread_mutex_init(&simdata->forks[i], NULL) != 0)
-			ft_error("Unable to initialise fork mutex");
+			ft_error("Unable to initialise fork mutex.");
 		i++;
 	}
 	i = 0;
