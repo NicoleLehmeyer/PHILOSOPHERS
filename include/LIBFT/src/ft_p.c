@@ -16,6 +16,7 @@ static int	ft_numcount(size_t input)
 {
 	int	digits;
 
+	digits = 0;
 	if (input < 0)
 	{
 		digits++;

@@ -29,22 +29,20 @@ int	main(int argc, char **argv)
 	}
 	assign_input(&simdata, argc, argv);
 	init_philos(&simdata);
+	init_forks(&simdata);
 	simdata.start_time = get_curr_time();
 	printf("Current time in milliseconds: %lu\n", simdata.start_time);
-	init_philos(&simdata);
-	init_forks(&simdata);
 
-	int i = 0
-	while (simdata->forks[i])
+	int i = 0;
+	while (i < simdata.nbr_of_philos)
 	{
-		printf("Fork[%d]: %d", i)
+		printf("Philo[%d] Left Fork[%d]: %d\n", i, i, simdata.philos[i].f_left.f_id);
+		printf("Philo[%d] Right Fork[%d]: %d\n", i, i, simdata.philos[i].f_right.f_id);
+		i++;
 	}
-	i = 0;
-	while (simdata->philo[i])
-	{
 		
-		printf("Philo[%d]: Left Fork:", i, )
-	}
+	// 	printf("Philo[%d]: Left Fork:", i, )
+	// }
 
 	// int i = 0;
 	// while (i < simdata.nbr_of_philos)

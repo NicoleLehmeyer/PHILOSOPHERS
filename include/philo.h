@@ -21,15 +21,20 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+typedef struct	s_forks
+{
+	int				f_id;
+	pthread_mutex_t	f_lock;
+}				t_forks;
+
 typedef struct	s_philo
 {
 	int			id;
 	int			meals_eaten;
 	long		time_since_last_meal;
-	pthread_t	thread_id;
-	pthread_mutex_t	r_fork;
-	pthread_mutex_t	l_fork;
-	
+	pthread_t	p_tid;
+	t_forks		f_left;
+	t_forks		f_right;
 }				t_philo;
 
 typedef struct	s_simdata
@@ -41,7 +46,7 @@ typedef struct	s_simdata
 	int				max_eat_occurences;
 	long			start_time;
 	t_philo			*philos;
-	pthread_mutex_t	*forks;
+	t_forks			*fork;
 	pthread_mutex_t	message;
 }				t_simdata;
 
@@ -61,5 +66,8 @@ void	init_forks(t_simdata *simdata);
 // *time.c* //
 long	get_curr_time(void);
 long	get_timestamp(t_simdata *simdata);
+
+// *routine.c //
+void	*the_routine(void *arg);
 
 #endif
