@@ -39,11 +39,11 @@ typedef struct	s_philo
 
 typedef struct	s_simdata
 {
-	int				nbr_of_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				max_eat_occurences;
+	int				nbr_philos;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				til_full;
 	long			start_time;
 	t_philo			*philos;
 	t_forks			*fork;
@@ -66,6 +66,7 @@ void	init_forks(t_simdata *simdata);
 // *time.c* //
 long	get_curr_time(void);
 long	get_timestamp(t_simdata *simdata);
+int		ft_usleep(long millisec);
 
 // *routine.c //
 void	*the_routine(void *arg);

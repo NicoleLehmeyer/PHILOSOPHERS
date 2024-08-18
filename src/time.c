@@ -27,6 +27,16 @@ long	get_timestamp(t_simdata *simdata)
 	return (get_curr_time() - simdata->start_time);
 }
 
+int	ft_usleep(long millisec)
+{
+	long	start;
+
+	start = get_curr_time();
+	while ((get_curr_time() - start) < millisec)
+		usleep(100);
+	return (0);
+}
+
 /*int main()
 {
 	struct timeval time;

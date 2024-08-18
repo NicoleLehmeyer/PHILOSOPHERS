@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	printf("Current time in milliseconds: %lu\n", simdata.start_time);
 
 	int i = 0;
-	while (i < simdata.nbr_of_philos)
+	while (i < simdata.nbr_philos)
 	{
 		printf("Philo[%d] Left Fork[%d]: %d\n", i, i, simdata.philos[i].f_left.f_id);
 		printf("Philo[%d] Right Fork[%d]: %d\n", i, i, simdata.philos[i].f_right.f_id);
@@ -45,14 +45,14 @@ int	main(int argc, char **argv)
 	// }
 
 	// int i = 0;
-	// while (i < simdata.nbr_of_philos)
+	// while (i < simdata.nbr_philos)
 	// {
 	// 	usleep(1000);
 	// 	simdata.philos[i].time_since_last_meal = get_timestamp(&simdata);
 	// 	printf("Philo[%d] id/mealseaten/timesince: %d, %d, %lu\n", i, simdata.philos[i].id, simdata.philos[i].meals_eaten, simdata.philos[i].time_since_last_meal);
 	// 	i++;
 	// }
-	// printf("Number of philos: %d\n", simdata.nbr_of_philos);
+	// printf("Number of philos: %d\n", simdata.nbr_philos);
 	// printf("Time to die: %d\n", simdata.time_to_die);
 	// printf("Time to eat: %d\n", simdata.time_to_eat);
 	// printf("Time to sleep: %d\n", simdata.time_to_sleep);

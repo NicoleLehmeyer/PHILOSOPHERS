@@ -36,11 +36,11 @@ bool	is_all_number(char **argv)
 
 void	assign_input(t_simdata *simdata, int argc, char **argv)
 {
-	simdata->nbr_of_philos = atoi(argv[1]);
-	simdata->time_to_die = atoi(argv[2]);
-	simdata->time_to_eat = atoi(argv[3]);
-	simdata->time_to_sleep = atoi(argv[4]);
-	simdata->max_eat_occurences = -1;
+	simdata->nbr_philos = atoi(argv[1]);
+	simdata->t_die = atoi(argv[2]);
+	simdata->t_eat = atoi(argv[3]);
+	simdata->t_sleep = atoi(argv[4]);
+	simdata->til_full = -1;
 	if (argc == 6)
 		simdata->max_eat_occurences = atoi(argv[5]);
 	simdata->start_time = get_curr_time();

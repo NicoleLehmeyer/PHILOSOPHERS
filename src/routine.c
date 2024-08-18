@@ -17,6 +17,6 @@ void	*the_routine(void *arg)
 	t_simdata *simdata;
 
 	simdata = (t_simdata *)arg;
-	printf("I'm Doing the routine TOTAL PHILOS %d\n", simdata->nbr_of_philos);
+	printf("I'm Doing the routine TOTAL PHILOS %d\n", simdata->nbr_philos);
 	return NULL;
 }
