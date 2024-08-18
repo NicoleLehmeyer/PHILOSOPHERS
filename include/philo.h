@@ -35,19 +35,22 @@ typedef struct	s_philo
 	pthread_t	p_tid;
 	t_forks		f_left;
 	t_forks		f_right;
+	t_simdata	*simdata;
 }				t_philo;
 
 typedef struct	s_simdata
 {
 	int				nbr_philos;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
 	int				til_full;
 	long			start_time;
 	t_philo			*philos;
 	t_forks			*fork;
-	pthread_mutex_t	message;
+	int				flag_simstop;
+	pthread_mutex_t	sim_check;
+	pthread_mutex_t	message_lock;
 }				t_simdata;
 
 // **main.c** //
@@ -70,5 +73,9 @@ int		ft_usleep(long millisec);
 
 // *routine.c //
 void	*the_routine(void *arg);
+void	print_message(t_philo philo, char *message);
+
+// *monitoring.c* //
+
 
 #endif

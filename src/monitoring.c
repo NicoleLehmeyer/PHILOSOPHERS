@@ -12,6 +12,8 @@
 
 #include "philo.h"
 
+
+
 //check cases which end simulation
 //these will be 2 extra threads! maybe
 //1. check & compare all philos number of meals to argv[6]
