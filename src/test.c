@@ -10,42 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void	death(t_data *data)
-{
-	int	i;
-
-	while (data->finished != 1 || data->dead != 1)
-	{
-		i = 0;
-		while (i < data->n_philo && data->dead != 1)
-		{
-			is_dead(data, i);
-			i++;
-		}
-		if (data->dead == 1)
-			break ;
-		i = 0;
-		while (data->n_meals != -1 && data->philos[i].count >= data->n_meals
-			&& i < data->n_philo)
-			i++;
-		if (i == data->n_philo)
-			data->finished = 1;
-	}
-}
-
-void	is_dead(t_data *data, int i)
-{
-	pthread_mutex_lock(&data->lock);
-	if (get_time() - data->philos[i].last_meal > (size_t)data->t_death)
-	{
-		message(&data->philos[i], "died");
-		data->dead = 1;
-	}
-	pthread_mutex_unlock(&data->lock);
-	usleep(100);
-}
-
 // #include "../include/philo.h"
 
 // #include <stdio.h>

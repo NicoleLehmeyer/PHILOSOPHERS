@@ -15,28 +15,64 @@
 
 void	end_sim(t_simdata *simdata)
 {
-	int	i;
-	while (simdata->all_full == 0 || simdata->philo_dead == 0)
+	if (pthread_create(&simdata->dead_checker, NULL, death_check, &simdata) != 0)
+		ft_error("Filed to create dead_checker thread.\n", simdata);
+	if (pthread_create(&simdata->full_checker, NULL, full_check, &simdata) != 0)
+		ft_error("Filed to create full_checker thread.\n", simdata);
+	while (1)
 	{
-		i = 0;
-		while (i < simdata->nbr_philos && simdata->philo_dead == 0)
-		{
-			pthrea
-		}
+		if(simdata->philo_dead != 0 || simdata->all_full != 0)
+			return ;
 	}
 	return ;
 }
 
-void	death_check(t_philo *philo)
+void	*full_check(void *arg)
 {
+	t_simdata	*simdata;
+	int			i;
 
-	return ;
+	simdata = (t_simdata *)arg;
+	while (simdata->all_full == 0 && simdata->philo_dead == 0)
+	{
+		i = 0;
+		while (i < simdata->nbr_philos)
+		{
+			if (simdata->philos[i].meals_eaten < simdata->til_full)
+				break;
+			i++;
+		}
+		if (i == simdata->nbr_philos)
+		{
+			simdata->all_full = 1;
+			return NULL;
+		}
+		ft_usleep(50);
+	}
+	return NULL;
 }
 
-//check cases which end simulation
-//these will be 2 extra threads! maybe
-//1. check & compare all philos number of meals to argv[6]
-//2. check & compare time_to_die to the time since last meal/start of sim
+void	*death_check(void *arg)
+{
+	t_simdata	*simdata;
+	int	i;
 
-//simdata->philos[i] = pthread_create(&philos[i].thread, ) // how does this function workkkkk?
-	//error handling if we can't create the thread
+	simdata = (t_simdata *)arg;
+	while (simdata->all_full == 0 && simdata->philo_dead == 0)
+	{
+		i = 0;
+		while (i < simdata->nbr_philos)
+		{
+			if (simdata->philos[i].time_last_eat > simdata->time_die)
+			{
+				print_message(&simdata->philos[i], "died");
+				simdata->philo_dead = 1;
+			}
+			else
+				i++;
+		}
+		ft_usleep(50);
+	}
+	return NULL;
+}
+	

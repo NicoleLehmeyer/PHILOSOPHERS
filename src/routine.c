@@ -34,21 +34,3 @@ void	print_message(t_philo *philo, char *message)
 	pthread_mutex_unlock(&philo->simdata->message_lock);
 	return ;
 }
-
-// void	sim_stop(t_simdata *simdata)
-// {
-// 	int	i;
-// 	while (1)
-// 	{
-// 		i = 0;
-// 		while(i < simdata->nbr_philos)
-// 		{
-// 			if (simdata->philos[i]->meals_eaten >= simdata->til_full)
-// 			i++;
-// 		}
-// 		(simdata-> != 0)
-
-// 	}
-
-
-// }

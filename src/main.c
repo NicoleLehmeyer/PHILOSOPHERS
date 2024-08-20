@@ -15,7 +15,7 @@
 void	ft_error(char *err_msg, t_simdata *simdata)
 {
 	printf("%s\n", err_msg);
-	free_exit(&simdata);
+	free_exit(simdata);
 	exit (1);
 }
 
@@ -42,9 +42,16 @@ void	free_exit(t_simdata *simdata)
 		}
 		free(simdata->fork);
 	}
-	pthread_mutex_destroy(&simdata->message_lock);
+	free_exit2(simdata);
 	free(simdata);
 	return ;
+}
+
+void	free_exit2(t_simdata *simdata)
+{
+	pthread_mutex_destroy(&simdata->message_lock);
+	pthread_join(simdata->full_checker, NULL);
+	pthread_join(simdata->dead_checker, NULL);
 }
 
 int	main(int argc, char **argv)
@@ -53,9 +60,9 @@ int	main(int argc, char **argv)
 
 	simdata = malloc(sizeof(t_simdata));
 	assign_input(simdata, argc, argv);
-	end_sim(simdata);
 	init_philos(simdata);
 	init_forks(simdata);
+	end_sim(simdata);
 	// Do_dinner;
 	free_exit(simdata);
 	return (0);

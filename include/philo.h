@@ -33,7 +33,7 @@ typedef struct	s_philo
 {
 	int			id;
 	int			meals_eaten;
-	long		time_since_last_meal;
+	long		time_last_eat;
 	pthread_t	p_tid;
 	t_forks		f_left;
 	t_forks		f_right;
@@ -52,13 +52,15 @@ typedef struct	s_simdata
 	t_forks			*fork;
 	int				philo_dead;
 	int				all_full;
-	pthread_t		checker;	//This needs to be joined in free_exit
+	pthread_t		full_checker;
+	pthread_t		dead_checker;	//This needs to be joined in free_exit
 	pthread_mutex_t	message_lock;
 }				t_simdata;
 
 // **main.c** //
 void	ft_error(char *err_msg, t_simdata *simdata);
 void	free_exit(t_simdata *simdata);
+void	free_exit2(t_simdata *simdata);
 int		main(int argc, char **argv);
 
 // **check_args.c** //	
@@ -81,6 +83,7 @@ void	print_message(t_philo *philo, char *message);
 
 // *monitoring.c* //
 void	end_sim(t_simdata *simdata);
-void	death_check(t_philo *philo);
+void	*full_check(void *arg);
+void	*death_check(void *arg);
 
 #endif
