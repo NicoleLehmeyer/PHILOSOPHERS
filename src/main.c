@@ -22,6 +22,7 @@ void	ft_error(char *err_msg, t_simdata *simdata)
 void	free_exit(t_simdata *simdata)
 {
 	int	i;
+
 	if (simdata->philos)
 	{
 		i = 0;

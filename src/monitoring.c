@@ -12,16 +12,16 @@
 
 #include "philo.h"
 
-
 void	end_sim(t_simdata *simdata)
 {
-	if (pthread_create(&simdata->dead_checker, NULL, death_check, &simdata) != 0)
+	if (pthread_create(&simdata->dead_checker, NULL, death_check,
+			&simdata) != 0)
 		ft_error("Filed to create dead_checker thread.\n", simdata);
 	if (pthread_create(&simdata->full_checker, NULL, full_check, &simdata) != 0)
 		ft_error("Filed to create full_checker thread.\n", simdata);
 	while (1)
 	{
-		if(simdata->philo_dead != 0 || simdata->all_full != 0)
+		if (simdata->philo_dead != 0 || simdata->all_full != 0)
 			return ;
 	}
 	return ;
@@ -39,23 +39,23 @@ void	*full_check(void *arg)
 		while (i < simdata->nbr_philos)
 		{
 			if (simdata->philos[i].meals_eaten < simdata->til_full)
-				break;
+				break ;
 			i++;
 		}
 		if (i == simdata->nbr_philos)
 		{
 			simdata->all_full = 1;
-			return NULL;
+			return (NULL);
 		}
 		ft_usleep(50);
 	}
-	return NULL;
+	return (NULL);
 }
 
 void	*death_check(void *arg)
 {
 	t_simdata	*simdata;
-	int	i;
+	int			i;
 
 	simdata = (t_simdata *)arg;
 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
@@ -63,7 +63,8 @@ void	*death_check(void *arg)
 		i = 0;
 		while (i < simdata->nbr_philos)
 		{
-			if (simdata->philos[i].time_last_eat - get_curr_time() > simdata->time_die)
+			if (simdata->philos[i].time_last_eat - get_curr_time()
+				> simdata->time_die)
 			{
 				print_message(&simdata->philos[i], "died");
 				simdata->philo_dead = 1;
@@ -73,6 +74,5 @@ void	*death_check(void *arg)
 		}
 		ft_usleep(50);
 	}
-	return NULL;
+	return (NULL);
 }
-	

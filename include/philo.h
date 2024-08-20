@@ -21,15 +21,15 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct	s_simdata t_simdata;
+typedef struct s_simdata	t_simdata;
 
-typedef struct	s_forks
+typedef struct s_forks
 {
 	int				f_id;
 	pthread_mutex_t	f_lock;
 }				t_forks;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int			id;
 	int			meals_eaten;
@@ -40,7 +40,7 @@ typedef struct	s_philo
 	t_simdata	*simdata;
 }				t_philo;
 
-typedef struct	s_simdata
+typedef struct s_simdata
 {
 	int				nbr_philos;
 	int				time_die;

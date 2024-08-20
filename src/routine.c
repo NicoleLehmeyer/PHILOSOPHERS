@@ -17,11 +17,10 @@ void	*the_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-
 	if (philo->simdata->nbr_philos == 1)
 	{
 		solo_eat(philo);
-		return NULL;
+		return (NULL);
 	}
 	if (philo->id % 2 == 1)
 		ft_usleep(50);
@@ -34,12 +33,12 @@ void	*the_routine(void *arg)
 		if (philo->simdata->all_full == 0 && philo->simdata->philo_dead == 0)
 			print_message(philo, "is thinking");
 	}
-	return NULL;
+	return (NULL);
 }
 
 void	solo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->f_left.f_lock);	
+	pthread_mutex_lock(&philo->f_left.f_lock);
 	print_message(philo, "grabbed a fork");
 	ft_usleep(philo->simdata->time_die);
 	print_message(philo, "died");
@@ -57,7 +56,7 @@ void	eat(t_philo *philo)
 	{
 		print_message(philo, "grabbed a fork");
 		print_message(philo, "is eating");
-	}	
+	}
 	philo->time_last_eat = get_curr_time();
 	philo->meals_eaten++;
 	ft_usleep(philo->simdata->time_eat);

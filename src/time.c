@@ -14,8 +14,8 @@
 
 long	get_curr_time(void)
 {
-	struct	timeval current_time;
-	long	millisec;
+	struct timeval	current_time;
+	long			millisec;
 
 	gettimeofday(&current_time, NULL);
 	millisec = (current_time.tv_sec * 1000 + current_time.tv_usec / 1000);
@@ -36,14 +36,3 @@ int	ft_usleep(long millisec)
 		usleep(100);
 	return (0);
 }
-
-/*int main()
-{
-	struct timeval time;
-
-	gettimeofday(&time, NULL);
-	printf("tv_sec == %ld	tv_usec == %d\n", time.tv_sec * 1000, time.tv_usec / 1000);
-	return (0);
-}*/
-
-//comparison between (event time - start sim time in milliseconds) and arg value of time to eat/sleep/die
