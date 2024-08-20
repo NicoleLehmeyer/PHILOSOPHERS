@@ -30,14 +30,14 @@ void	init_philos(t_simdata *simdata)
 		simdata->philos[i].time_since_last_meal = 0;
 		simdata->philos[i].simdata = simdata;
 		if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine, &simdata->philos[i]) != 0)
-			ft_error("Failed to create thread.\n");
+			ft_error("Failed to create philo thread.\n", &simdata);
 		printf("Philo[%d] initiated\n", i);
 		if (pthread_join(simdata->philos[i].p_tid, NULL) != 0)
 		{
-			ft_error("Failed to join thread.\n");
+			ft_error("Failed to join thread.\n", &simdata);
 			return ;
 		}
-		printf("Threads have finished execution.\n");
+		printf("Threads have finished execution.\n", &simdata);
 		i++;
 	}
 }
@@ -49,11 +49,11 @@ void	init_forks(t_simdata *simdata)
 	i = 0;
 	simdata->fork = malloc(sizeof(pthread_mutex_t) * simdata->nbr_philos);
 	if (!simdata->fork)
-		ft_error("Unable to malloc forks array.");
+		ft_error("Unable to malloc forks array.", &simdata);
 	while (i < simdata->nbr_philos)
 	{
 		if (pthread_mutex_init(&simdata->fork[i].f_lock, NULL) != 0)
-			ft_error("Unable to initialise fork mutex.");
+			ft_error("Unable to initialise fork mutex.", &simdata);
 		else
 			simdata->fork[i].f_id = i;
 		i++;

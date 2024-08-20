@@ -11,6 +11,7 @@ SOURCES = src/main.c \
 	src/time.c \
 	src/initialise.c \
 	src/routine.c \
+	src/monitoring.c \
 
 OBJECTS = $(SOURCES:src/.c=obj/.o)
 

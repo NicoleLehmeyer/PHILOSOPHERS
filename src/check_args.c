@@ -36,6 +36,8 @@ bool	is_all_number(char **argv)
 
 void	assign_input(t_simdata *simdata, int argc, char **argv)
 {
+	if (!is_correct_input(argc, argv))
+		ft_error("Incorrect input\n", &simdata);
 	simdata->nbr_philos = atoi(argv[1]);
 	simdata->time_die = atoi(argv[2]);
 	simdata->time_eat = atoi(argv[3]);
@@ -44,23 +46,16 @@ void	assign_input(t_simdata *simdata, int argc, char **argv)
 	if (argc == 6)
 		simdata->til_full = atoi(argv[5]);
 	simdata->start_time = get_curr_time();
-	simdata->simstop = 0;
+	simdata->philo_dead = 0;
+	simdata->all_full = 0;
 	if (pthread_mutex_init(&simdata->message_lock, NULL) != 0)
-		ft_error("Unable to initialise message_lock] mutex.");
-	// if (pthread_mutex_init(&simdata->sim_check, NULL) != 0)
-	// 	ft_error("Unable to initialise sim _check mutex.");
+		ft_error("Unable to initialise message_lock mutex.\n", &simdata);
 }
 
 bool	is_correct_input(int argc, char **argv)
 {
 	if ((argc == 5 || argc == 6) && (is_all_number(argv) == true))
-	{
-		printf("args are all g\n");
 		return (true);
-	}	
 	else
-	{
-		printf("args are NOT OKAYYY\n");
 		return (false);
-	}
 }

@@ -12,63 +12,51 @@
 
 #include "philo.h"
 
-void	ft_error(char *err_msg)
+void	ft_error(char *err_msg, t_simdata *simdata)
 {
 	printf("%s\n", err_msg);
+	free_exit(&simdata);
 	exit (1);
 }
 
-// void	free_exit(t_simdata *simdata)
-// {
-
-// 	//join the threads
-// 	//destroy the fork mutexes
-// 	//destroy the simstop mutex
-// 	//destroy the printing mutex
-// 	//free fork array
-// 	//free philos array
-// 	//free simdata
-// }
+void	free_exit(t_simdata *simdata)
+{
+	int	i;
+	if (simdata->philos)
+	{
+		i = 0;
+		while (i < simdata->nbr_philos)
+		{
+			pthread_join(simdata->philos[i].p_tid, NULL);
+			i++;
+		}
+		free(simdata->philos);
+	}
+	if (simdata->fork)
+	{
+		i = 0;
+		while (i < simdata->nbr_philos)
+		{
+			pthread_mutex_destroy(&simdata->fork[i].f_lock);
+			i++;
+		}
+		free(simdata->fork);
+	}
+	pthread_mutex_destroy(&simdata->message_lock);
+	free(simdata);
+	return ;
+}
 
 int	main(int argc, char **argv)
 {
 	t_simdata	*simdata;
 
 	simdata = malloc(sizeof(t_simdata));
-	if (!is_correct_input(argc, argv))
-	{
-		printf("Not going to assign tf bitch\n");
-		return (0);
-	}
 	assign_input(simdata, argc, argv);
-	simdata->start_time = get_curr_time();
+	end_sim(simdata);
 	init_philos(simdata);
 	init_forks(simdata);
-	printf("Current time in milliseconds: %lu\n", simdata->start_time);
-	// int i = 0;
-	// while (i < simdata->nbr_philos)
-	// {
-	// 	printf("Philo[%d] Left Fork[%d]: %d\n", i, i, simdata->philos[i].f_left.f_id);
-	// 	printf("Philo[%d] Right Fork[%d]: %d\n", i, i, simdata->philos[i].f_right.f_id);
-	// 	i++;
-	// }
-	
-
-	// 	printf("Philo[%d]: Left Fork:", i, )
-	// }
-
-	// int i = 0;
-	// while (i < simdata.nbr_philos)
-	// {
-	// 	usleep(1000);
-	// 	simdata.philos[i].time_since_last_meal = get_timestamp(&simdata);
-	// 	printf("Philo[%d] id/mealseaten/timesince: %d, %d, %lu\n", i, simdata.philos[i].id, simdata.philos[i].meals_eaten, simdata.philos[i].time_since_last_meal);
-	// 	i++;
-	// }
-	// printf("Number of philos: %d\n", simdata.nbr_philos);
-	// printf("Time to die: %d\n", simdata.time_to_die);
-	// printf("Time to eat: %d\n", simdata.time_to_eat);
-	// printf("Time to sleep: %d\n", simdata.time_to_sleep);
-	// printf("Max eat occurences: %d\n", simdata.max_eat_occurences);
+	// Do_dinner;
+	free_exit(simdata);
 	return (0);
 }

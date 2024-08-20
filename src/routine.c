@@ -19,7 +19,11 @@ void	*the_routine(void *arg)
 	philo = (t_philo *)arg;
 
 	ft_usleep(5);
+	//if (philo->simdata->philo_dead == 0 && philo->simdata->all_full = 0)
+		//then you may print whatever message
 	print_message(philo, "is a philosopher.\n");
+
+	// print_message (they died)
 	return NULL;
 }
 
@@ -30,3 +34,21 @@ void	print_message(t_philo *philo, char *message)
 	pthread_mutex_unlock(&philo->simdata->message_lock);
 	return ;
 }
+
+// void	sim_stop(t_simdata *simdata)
+// {
+// 	int	i;
+// 	while (1)
+// 	{
+// 		i = 0;
+// 		while(i < simdata->nbr_philos)
+// 		{
+// 			if (simdata->philos[i]->meals_eaten >= simdata->til_full)
+// 			i++;
+// 		}
+// 		(simdata-> != 0)
+
+// 	}
+
+
+// }

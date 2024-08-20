@@ -13,6 +13,25 @@
 #include "philo.h"
 
 
+void	end_sim(t_simdata *simdata)
+{
+	int	i;
+	while (simdata->all_full == 0 || simdata->philo_dead == 0)
+	{
+		i = 0;
+		while (i < simdata->nbr_philos && simdata->philo_dead == 0)
+		{
+			pthrea
+		}
+	}
+	return ;
+}
+
+void	death_check(t_philo *philo)
+{
+
+	return ;
+}
 
 //check cases which end simulation
 //these will be 2 extra threads! maybe

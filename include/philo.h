@@ -50,13 +50,15 @@ typedef struct	s_simdata
 	long			start_time;
 	t_philo			*philos;
 	t_forks			*fork;
-	int				simstop;
-	pthread_mutex_t	sim_check;
+	int				philo_dead;
+	int				all_full;
+	pthread_t		checker;	//This needs to be joined in free_exit
 	pthread_mutex_t	message_lock;
 }				t_simdata;
 
 // **main.c** //
-void	ft_error(char *err_msg);
+void	ft_error(char *err_msg, t_simdata *simdata);
+void	free_exit(t_simdata *simdata);
 int		main(int argc, char **argv);
 
 // **check_args.c** //	
@@ -78,6 +80,7 @@ void	*the_routine(void *arg);
 void	print_message(t_philo *philo, char *message);
 
 // *monitoring.c* //
-
+void	end_sim(t_simdata *simdata);
+void	death_check(t_philo *philo);
 
 #endif
