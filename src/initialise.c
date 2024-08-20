@@ -29,11 +29,11 @@ void	init_philos(t_simdata *simdata)
 		if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine,
 				&simdata->philos[i]) != 0)
 			ft_error("Failed to create philo thread.\n", simdata);
-		if (pthread_join(simdata->philos[i].p_tid, NULL) != 0)
-		{
-			ft_error("Failed to join thread.\n", simdata);
-			return ;
-		}
+		// if (pthread_join(simdata->philos[i].p_tid, NULL) != 0)
+		// {
+		// 	ft_error("Failed to join thread.\n", simdata);
+		// 	return ;
+		// }
 		i++;
 	}
 }
