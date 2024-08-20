@@ -63,7 +63,6 @@ int	main(int argc, char **argv)
 	init_philos(simdata);
 	init_forks(simdata);
 	end_sim(simdata);
-	// Do_dinner;
 	free_exit(simdata);
 	return (0);
 }

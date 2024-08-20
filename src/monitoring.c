@@ -63,7 +63,7 @@ void	*death_check(void *arg)
 		i = 0;
 		while (i < simdata->nbr_philos)
 		{
-			if (simdata->philos[i].time_last_eat > simdata->time_die)
+			if (simdata->philos[i].time_last_eat - get_curr_time() > simdata->time_die)
 			{
 				print_message(&simdata->philos[i], "died");
 				simdata->philo_dead = 1;

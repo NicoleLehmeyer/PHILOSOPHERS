@@ -53,35 +53,37 @@ typedef struct	s_simdata
 	int				philo_dead;
 	int				all_full;
 	pthread_t		full_checker;
-	pthread_t		dead_checker;	//This needs to be joined in free_exit
+	pthread_t		dead_checker;
 	pthread_mutex_t	message_lock;
 }				t_simdata;
 
-// **main.c** //
+// ** main.c ** //
 void	ft_error(char *err_msg, t_simdata *simdata);
 void	free_exit(t_simdata *simdata);
 void	free_exit2(t_simdata *simdata);
 int		main(int argc, char **argv);
 
-// **check_args.c** //	
+// ** check_args.c ** //	
 bool	is_correct_input(int argc, char **argv);
 void	assign_input(t_simdata *simdata, int argc, char **argv);
 bool	is_all_number(char **argv);
 
-// *initialise.c* //
+// ** initialise.c ** //
 void	init_philos(t_simdata *simdata);
 void	init_forks(t_simdata *simdata);
 
-// *time.c* //
+// ** time.c ** //
 long	get_curr_time(void);
 long	get_timestamp(t_simdata *simdata);
 int		ft_usleep(long millisec);
 
-// *routine.c //
+// ** routine.c ** //
 void	*the_routine(void *arg);
+void	solo_eat(t_philo *philo);
+void	eat(t_philo *philo);
 void	print_message(t_philo *philo, char *message);
 
-// *monitoring.c* //
+// ** monitoring.c ** //
 void	end_sim(t_simdata *simdata);
 void	*full_check(void *arg);
 void	*death_check(void *arg);
