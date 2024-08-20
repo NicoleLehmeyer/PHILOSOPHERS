@@ -21,6 +21,8 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+typedef struct	s_simdata t_simdata;
+
 typedef struct	s_forks
 {
 	int				f_id;
@@ -48,7 +50,7 @@ typedef struct	s_simdata
 	long			start_time;
 	t_philo			*philos;
 	t_forks			*fork;
-	int				flag_simstop;
+	int				simstop;
 	pthread_mutex_t	sim_check;
 	pthread_mutex_t	message_lock;
 }				t_simdata;
@@ -73,7 +75,7 @@ int		ft_usleep(long millisec);
 
 // *routine.c //
 void	*the_routine(void *arg);
-void	print_message(t_philo philo, char *message);
+void	print_message(t_philo *philo, char *message);
 
 // *monitoring.c* //
 

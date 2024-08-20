@@ -14,17 +14,19 @@
 
 void	*the_routine(void *arg)
 {
-	t_simdata *simdata;
+	t_philo	*philo;
 
-	simdata = (t_simdata *)arg;
-	printf("I'm Doing the routine TOTAL PHILOS %d\n", simdata->nbr_philos);
+	philo = (t_philo *)arg;
+
+	ft_usleep(5);
+	print_message(philo, "is a philosopher.\n");
 	return NULL;
 }
 
-void	print_message(t_philo philo, char *message)
+void	print_message(t_philo *philo, char *message)
 {
-	pthread_mutex_lock(&philo->simdata.message_lock);
-	printf("&lu\t%d %s")
-	pthread_mutex_unlock(&philo->simdata.message_lock);
+	pthread_mutex_lock(&philo->simdata->message_lock);
+	printf("%lu%4d %s", get_timestamp(philo->simdata), philo->id, message);
+	pthread_mutex_unlock(&philo->simdata->message_lock);
 	return ;
 }

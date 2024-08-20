@@ -42,11 +42,13 @@ void	assign_input(t_simdata *simdata, int argc, char **argv)
 	simdata->time_sleep = atoi(argv[4]);
 	simdata->til_full = -1;
 	if (argc == 6)
-		simdata->max_eat_occurences = atoi(argv[5]);
+		simdata->til_full = atoi(argv[5]);
 	simdata->start_time = get_curr_time();
-	simdata->sim_stop = 0;
-	if (pthread_mutex_init(&simdata.sim_check, NULL) != 0)
-		ft_error("Unable to initialise sim check mutex.");
+	simdata->simstop = 0;
+	if (pthread_mutex_init(&simdata->message_lock, NULL) != 0)
+		ft_error("Unable to initialise message_lock] mutex.");
+	// if (pthread_mutex_init(&simdata->sim_check, NULL) != 0)
+	// 	ft_error("Unable to initialise sim _check mutex.");
 }
 
 bool	is_correct_input(int argc, char **argv)
