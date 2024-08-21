@@ -29,16 +29,16 @@ typedef struct s_forks
 	pthread_mutex_t	f_lock;
 }				t_forks;
 
-typedef struct s_philo
+typedef struct 		s_philo
 {
-	int			id;
-	int			meals_eaten;
-	long		time_last_eat;
-	pthread_t	p_tid;
-	t_forks		f_left;
-	t_forks		f_right;
-	t_simdata	*simdata;
-}				t_philo;
+	int				id;
+	int				meals_eaten;
+	long			time_last_eat;
+	pthread_t		p_tid;
+	pthread_mutex_t	*f_left;
+	pthread_mutex_t	*f_right;
+	t_simdata		*simdata;
+}					t_philo;
 
 typedef struct s_simdata
 {
@@ -54,6 +54,7 @@ typedef struct s_simdata
 	int				all_full;
 	pthread_t		full_checker;
 	pthread_t		dead_checker;
+	pthread_mutex_t	endsim_lock;
 	pthread_mutex_t	message_lock;
 }				t_simdata;
 

@@ -43,7 +43,7 @@ void	init_forks(t_simdata *simdata)
 	int	i;
 
 	i = 0;
-	simdata->fork = malloc(sizeof(pthread_mutex_t) * simdata->nbr_philos);
+	simdata->fork = malloc(sizeof(t_forks) * simdata->nbr_philos);
 	if (!simdata->fork)
 		ft_error("Unable to malloc forks array.", simdata);
 	while (i < simdata->nbr_philos)
@@ -57,11 +57,11 @@ void	init_forks(t_simdata *simdata)
 	i = 0;
 	while (i < simdata->nbr_philos)
 	{
-		simdata->philos[i].f_left = simdata->fork[i];
+		simdata->philos[i].f_left = &simdata->fork[i].f_lock;
 		if (i == 0)
-			simdata->philos[i].f_right = simdata->fork[simdata->nbr_philos - 1];
+			simdata->philos[i].f_right = &simdata->fork[simdata->nbr_philos - 1].f_lock;
 		else
-			simdata->philos[i].f_right = simdata->fork[i - 1];
+			simdata->philos[i].f_right = &simdata->fork[i - 1].f_lock;
 		i++;
 	}
 }

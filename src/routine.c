@@ -38,20 +38,20 @@ void	*the_routine(void *arg)
 
 void	solo_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->f_left.f_lock);
+	pthread_mutex_lock(philo->f_left);
 	print_message(philo, "grabbed a fork");
 	ft_usleep(philo->simdata->time_die);
 	print_message(philo, "died");
-	pthread_mutex_unlock(&philo->f_left.f_lock);
+	pthread_mutex_unlock(philo->f_left);
 	philo->simdata->philo_dead = 1;
 }
 
 void	eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->f_left.f_lock);
+	pthread_mutex_lock(philo->f_left);
 	if (philo->simdata->all_full == 0 && philo->simdata->philo_dead == 0)
 		print_message(philo, "grabbed a fork");
-	pthread_mutex_lock(&philo->f_right.f_lock);
+	pthread_mutex_lock(philo->f_right);
 	if (philo->simdata->all_full == 0 && philo->simdata->philo_dead == 0)
 	{
 		print_message(philo, "grabbed a fork");
@@ -60,8 +60,8 @@ void	eat(t_philo *philo)
 	philo->time_last_eat = get_curr_time();
 	philo->meals_eaten++;
 	ft_usleep(philo->simdata->time_eat);
-	pthread_mutex_unlock(&philo->f_left.f_lock);
-	pthread_mutex_unlock(&philo->f_right.f_lock);
+	pthread_mutex_unlock(philo->f_left);
+	pthread_mutex_unlock(philo->f_right);
 	return ;
 }
 

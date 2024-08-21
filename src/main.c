@@ -52,6 +52,7 @@ void	free_exit2(t_simdata *simdata)
 {
 	pthread_join(simdata->full_checker, NULL);
 	pthread_join(simdata->dead_checker, NULL);
+	pthread_mutex_destroy(&simdata->endsim_lock);
 	pthread_mutex_destroy(&simdata->message_lock);
 }
 
@@ -61,8 +62,8 @@ int	main(int argc, char **argv)
 
 	simdata = malloc(sizeof(t_simdata));
 	assign_input(simdata, argc, argv);
-	init_philos(simdata);
 	init_forks(simdata);
+	init_philos(simdata);
 	end_sim(simdata);
 	free_exit(simdata);
 	return (0);

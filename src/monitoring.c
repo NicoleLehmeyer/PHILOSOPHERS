@@ -14,6 +14,28 @@
 
 void	end_sim(t_simdata *simdata)
 {
+	if (pthread_create(&simdata->dead_checker, NULL, death_check, simdata) != 0)
+		ft_error("Filed to create dead_checker thread.\n", simdata);
+	if (pthread_create(&simdata->full_checker, NULL, full_check, simdata) != 0)
+		ft_error("Filed to create full_checker thread.\n", simdata);
+	if (pthread_mutex_init(&simdata->endsim_lock, NULL) != 0)
+		ft_error("Unable to initialise fork mutex.", simdata);
+	while (1)
+	{
+		pthread_mutex_lock(&simdata->endsim_lock);
+		if (simdata->philo_dead != 0 || simdata->all_full != 0)
+		{
+			pthread_mutex_unlock(&simdata->endsim_lock);
+			return ;
+		}
+		pthread_mutex_unlock(&simdata->endsim_lock);
+	}
+	return ;
+}
+
+/*
+void	end_sim(t_simdata *simdata)
+{
 	if (pthread_create(&simdata->dead_checker, NULL, death_check,
 			&simdata) != 0)
 		ft_error("Filed to create dead_checker thread.\n", simdata);
@@ -26,6 +48,7 @@ void	end_sim(t_simdata *simdata)
 	}
 	return ;
 }
+*/
 
 void	*full_check(void *arg)
 {
@@ -63,8 +86,7 @@ void	*death_check(void *arg)
 		i = 0;
 		while (i < simdata->nbr_philos)
 		{
-			if (simdata->philos[i].time_last_eat - get_curr_time()
-				> simdata->time_die)
+			if (get_curr_time() - simdata->philos[i].time_last_eat >= simdata->time_die)
 			{
 				print_message(&simdata->philos[i], "died");
 				simdata->philo_dead = 1;
