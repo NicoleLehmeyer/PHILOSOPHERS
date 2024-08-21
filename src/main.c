@@ -50,9 +50,9 @@ void	free_exit(t_simdata *simdata)
 
 void	free_exit2(t_simdata *simdata)
 {
-	pthread_mutex_destroy(&simdata->message_lock);
 	pthread_join(simdata->full_checker, NULL);
 	pthread_join(simdata->dead_checker, NULL);
+	pthread_mutex_destroy(&simdata->message_lock);
 }
 
 int	main(int argc, char **argv)

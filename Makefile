@@ -22,7 +22,7 @@ $(NAME): $(OBJECTS) $(LIBFT_ARCHIVE)
 
 obj/.o: src/.c
 	mkdir -p obj
-	cc $(FLAGS) -c $< -o $@
+	gcc $(FLAGS) -c $< -o $@
 
 $(LIBFT_ARCHIVE):
 	$(MAKE) -s -C include/LIBFT

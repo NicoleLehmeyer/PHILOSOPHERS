@@ -42,7 +42,7 @@ void	*full_check(void *arg)
 				break ;
 			i++;
 		}
-		if (i == simdata->nbr_philos)
+		if (i > simdata->nbr_philos)
 		{
 			simdata->all_full = 1;
 			return (NULL);

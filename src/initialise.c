@@ -22,7 +22,7 @@ void	init_philos(t_simdata *simdata)
 		ft_error("Failed to malloc philos\n", simdata);
 	while (i < simdata->nbr_philos)
 	{
-		simdata->philos[i].id = i;
+		simdata->philos[i].id = i + 1;
 		simdata->philos[i].meals_eaten = 0;
 		simdata->philos[i].time_last_eat = 0;
 		simdata->philos[i].simdata = simdata;
