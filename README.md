@@ -34,7 +34,7 @@
   <br>
   <br>
   <br>
-  <b>Philosophers Method:</b><br>
+  <b>My Program Method:</b><br>
   1.  Check argument input (argv must be 5 or 6, and all arguments must be numbers/digits).<br>
   2.  Initialise philosopher and fork array, and assign struct variables. Assign forks to each philosopher's left and right.<br>
   3.  If there is one philosopher, it grabs a fork then dies.<br>
@@ -50,14 +50,16 @@
 <p>
   <b>Create executables:</b> <code>make</code><br>
   <br>
-  <b>Run program:</b> <code>ARG="<integers seperated by ' ' character>; ./push_swap $ARG</code><br>
-  ie.: <code>ARG=""54 32 0 67 88 -1234 51 567"; ./push_swap $ARG</code><br>
+  <b>Run program:</b> <code>./philo *time_to_die* *time_to_eat* *time_to_sleep* *OPTIONAL:minimum_times_each_philo_must_eat*</code><br>
+  ie.: <code>./philo 2 100 100 100</code> (philosopher should die)<br> 
+  ie.: <code>./philo 1 800 200 200</code> (philosopher will not eat and should die)<br> 
+  ie.: <code>./philo 5 800 200 200</code> (no philosopher should die)<br>
+  ie.: <code>./philo 5 800 200 200 7</code> (no philosopher should die, sim should end after each philosopher has eaten 7 times)<br>
+  ie.: <code>./philo 4 410 200 200</code> (no philosopher should die)<br>
+  ie.: <code>./philo 4 310 200 100</code> (philosopher should die)<br>
+  - Do not test with more than 200 philosophers<br>
+  - Do not test with <code>time_to_die</code>code> or <code>time_to_sleep</code> set to values lower than 60 ms.<br>
   <br>
-  <b>Run program with checker:</b> <code>ARG="<integers seperated by ' ' character>"; ./push_swap $ARG | ./checker_mac $ARG</code><br>
-  ie. <code>ARG="54 32 0 67 88 -1234 51 567"; ./push_swap $ARG | ./checker_mac $ARG</code><br>
-  <br>
-  You may also specify number of integers to test with and how many times you wish to test: <code>./push_swap_tester.sh <no. of integers> -r <no. of tests run></code><br>
-  ie. <code>./push_swap_tester.sh 100 -r 200</code> (run program with 100 integers, 200 times)<br>
   <br>
   <br>
 </p>
