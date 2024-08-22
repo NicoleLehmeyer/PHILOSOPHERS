@@ -57,7 +57,7 @@ void	eat(t_philo *philo)
 		print_message(philo, "grabbed a fork");
 		print_message(philo, "is eating");
 	}
-	philo->time_last_eat = get_curr_time();
+	philo->time_last_eat = get_timestamp(philo->simdata);
 	philo->meals_eaten++;
 	ft_usleep(philo->simdata->time_eat);
 	pthread_mutex_unlock(philo->f_left);

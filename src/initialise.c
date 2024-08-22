@@ -26,9 +26,9 @@ void	init_philos(t_simdata *simdata)
 		simdata->philos[i].meals_eaten = 0;
 		simdata->philos[i].time_last_eat = 0;
 		simdata->philos[i].simdata = simdata;
-		if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine,
-				&simdata->philos[i]) != 0)
-			ft_error("Failed to create philo thread.\n", simdata);
+		// if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine,
+		// 		&simdata->philos[i]) != 0)
+		// 	ft_error("Failed to create philo thread.\n", simdata);
 		// if (pthread_join(simdata->philos[i].p_tid, NULL) != 0)
 		// {
 		// 	ft_error("Failed to join thread.\n", simdata);
@@ -62,6 +62,9 @@ void	init_forks(t_simdata *simdata)
 			simdata->philos[i].f_right = &simdata->fork[simdata->nbr_philos - 1].f_lock;
 		else
 			simdata->philos[i].f_right = &simdata->fork[i - 1].f_lock;
+		if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine,
+				&simdata->philos[i]) != 0)
+			ft_error("Failed to create philo thread.\n", simdata);
 		i++;
 	}
 }

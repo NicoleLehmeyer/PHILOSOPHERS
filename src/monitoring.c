@@ -50,6 +50,31 @@ void	end_sim(t_simdata *simdata)
 }
 */
 
+// void	*full_check(void *arg)
+// {
+// 	t_simdata	*simdata;
+// 	int			i;
+
+// 	simdata = (t_simdata *)arg;
+// 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
+// 	{
+// 		i = 0;
+// 		while (i < simdata->nbr_philos)
+// 		{
+// 			if (simdata->philos[i].meals_eaten < simdata->til_full)
+// 				break ;
+// 			i++;
+// 		}
+// 		if (i >= simdata->nbr_philos)
+// 		{
+// 			simdata->all_full = 1;
+// 			return (NULL);
+// 		}
+// 		ft_usleep(50);
+// 	}
+// 	return (NULL);
+// }
+
 void	*full_check(void *arg)
 {
 	t_simdata	*simdata;
@@ -65,7 +90,7 @@ void	*full_check(void *arg)
 				break ;
 			i++;
 		}
-		if (i > simdata->nbr_philos)
+		if (i >= simdata->nbr_philos)
 		{
 			simdata->all_full = 1;
 			return (NULL);
@@ -84,9 +109,9 @@ void	*death_check(void *arg)
 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
 	{
 		i = 0;
-		while (i < simdata->nbr_philos)
+		while (i < simdata->nbr_philos && simdata->philo_dead == 0)
 		{
-			if (get_curr_time() - simdata->philos[i].time_last_eat >= simdata->time_die)
+			if (get_timestamp(simdata) - simdata->philos[i].time_last_eat >= simdata->time_die)
 			{
 				print_message(&simdata->philos[i], "died");
 				simdata->philo_dead = 1;

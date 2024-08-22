@@ -23,6 +23,7 @@ void	free_exit(t_simdata *simdata)
 {
 	int	i;
 
+	free_exit2(simdata);
 	if (simdata->philos)
 	{
 		i = 0;
@@ -43,7 +44,6 @@ void	free_exit(t_simdata *simdata)
 		}
 		free(simdata->fork);
 	}
-	free_exit2(simdata);
 	free(simdata);
 	return ;
 }
@@ -61,9 +61,11 @@ int	main(int argc, char **argv)
 	t_simdata	*simdata;
 
 	simdata = malloc(sizeof(t_simdata));
+	if (!simdata)
+		return (0);
 	assign_input(simdata, argc, argv);
-	init_forks(simdata);
 	init_philos(simdata);
+	init_forks(simdata);
 	end_sim(simdata);
 	free_exit(simdata);
 	return (0);
