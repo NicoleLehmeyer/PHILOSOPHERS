@@ -19,9 +19,10 @@
   - <code>time_to_eat</code>(in milliseconds): Time it takes for a philosopher to eat a meal (with two forks)<br>
   - <code>time_to_sleep</code>(in milliseconds): Time it takes for a philosopher to sleep, after eating<br>
   - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Min times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br><br>
+  
   <b>The Program:</b><br><br>
-  - Each philosopher is named by number, from '1', to <code>number_of_philosophers</code><br>
-  - Philosopher '1' sits next to philosopher 'number of philosophers'. Other philosophers, 'N' sit next to philosopher 'N - 1' and 'N + 1.'<br>
+  - Each philosopher is named by number, from <code>1</code>, to <code>number_of_philosophers</code><br>
+  - Philosopher <code>1</code> sits next to philosopher <code>number of philosophers</code>. Other philosophers, <code>N</code> sit next to philosopher <code>N - 1</code> and <code>N + 1</code><br>
   - The program output must be a log of philosopher events, formatted as <code>timestamp_in_ms X event</code>, where X is the philosopher name<br>
   - The messages must not be jumbled or mixed, and the message announcing that a philosopher has died must display no more than 10ms after death.<br><br>
 
