@@ -1,7 +1,7 @@
 # PHILOSOPHERS
 
 <p>
-  <b><a href="https://github.com/NicoleLehmeyer/PHILOSOPHERS/blob/main/subject/PHILOSOPHERS_SUBJECT.pdf">'philosophers'</a> is a 42 project which involves the creation of a project which tackles the 'Philosophers' problem, requiring the use of concurrent programming by threading processes and utilising mutexes.
+  <b><a href="https://github.com/NicoleLehmeyer/PHILOSOPHERS/blob/main/subject/PHILOSOPHERS_SUBJECT.pdf">'philosophers'</a> is a 42 project which involves the creation of a program which tackles the 'Philosophers' problem, requiring the use of concurrent programming by threading processes and utilising mutexes.</b>
     
 <br><br>
   <b>philosophers Grade: 100%</b>
