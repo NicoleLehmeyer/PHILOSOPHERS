@@ -3,14 +3,31 @@
 <p>
   <b><a href="https://github.com/NicoleLehmeyer/PHILOSOPHERS/blob/main/subject/PHILOSOPHERS_SUBJECT.pdf">'philosophers'</a> is a 42 project which involves the creation of a project which tackles the 'Philosophers' problem, requiring the use of concurrent programming by threading processes and utilising mutexes.
     
-    requires creating a project which calculates and displays on stdout, the smallest list of instructions (allowed pushswap operations used to manipulate the stacks), which sorts integers received as arguments, across 2 stacks.</b><br><br>
+<br><br>
   <b>philosophers Grade: 100%</b>
   <br>
   <br>
   <br>
-  <b>Requirements:</b><br><br>
-  - One or more philosophers sit at a found table. They each bring one fork to the table, which they will use, with another fork shared with an adjacent philosopher, to eat one big bowl of spaghetti in the centre of the table. (Maybe you only need one fork to eat spaghetti, but these philosophers are special and need two. If that idea still doesn't sit well with you, maybe imagine that the forks are chopsticks... These philosophers must have two to eat!<br>
-  - The philosophers alternatively <b>eat, sleep, then think</b><br>
+  <b>The Philosophers Problem:</b><br><br>
+  - One or more philosophers sit at a found table. They each bring one fork to the table, which they will use, with another fork shared with an adjacent philosopher (one fork in each hand - left & right), to eat one big bowl of spaghetti in the centre of the table. (Maybe you only need one fork to eat spaghetti, but these philosophers are special and need two. If that idea still doesn't sit well with you, maybe imagine that the forks are chopsticks... These philosophers must have two to eat!<br>
+  - When a philosopher has finished eating, they place both forks on the table. They alternatively <b>eat, sleep, then think</b>. They can only do one task at a time.<br>
+  - The philosophers can starve to death if they haven't eaten for a specified period of time...<br><br>
+
+  <b>Program Arguments:</b><br>
+  - <code>number_of_philosophers</code>: Number of philosophers (also number of forks)<br>
+  - <code>time_to_die</code>(in milliseconds): If a philosopher hasn't started eating <code>time_to_die</code> ms since the beginning of their last meal/beginning of simulation, they die!<br>
+  - <code>time_to_eat</code>(in milliseconds): Time it takes for a philosopher to eat a meal (with two forks)<br>
+  - <code>time_to_sleep</code>(in milliseconds): Time it takes for a philosopher to sleep, after eating<br>
+  - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Min times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br>
+
+  <b>The Program:</b><br><br>
+  - Each philosopher is named by number, from '1', to <code>number_of_philosophers</code><br>
+  - Philosopher '1' sits next to philosopher 'number of philosophers'. Other philosophers, 'N' sit next to philosopher 'N - 1' and 'N + 1.'<br>
+  - The program output must be a log of philosopher events, formatted as <code>timestamp_in_ms X event</code>, where X is the philosopher name<br>
+  - The messages must not be jumbled or mixed, and the message announcing that a philosopher has died must display no more than 10ms after death.<br><br>
+
+
+  
   The program must sort a list of integers in ascending order, using the allowed 'operations' to organise the integers across two stacks, <b>'stack a'</b> and <b>'stack b'</b>.<br><br>
   The integers to be sorted must be firstly placed in 'stack a', with the first argument at the top of the stack. 'stack b' begins empty.<br><br>
   <b>The sort is to be completed within the maximum number of operations:</b><br>
