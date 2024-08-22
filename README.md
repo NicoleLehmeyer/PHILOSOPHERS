@@ -18,7 +18,7 @@
   - <code>time_to_die</code>(in milliseconds): If a philosopher hasn't started eating <code>time_to_die</code> ms since the beginning of their last meal/beginning of simulation, they die!<br>
   - <code>time_to_eat</code>(in milliseconds): Time it takes for a philosopher to eat a meal (with two forks)<br>
   - <code>time_to_sleep</code>(in milliseconds): Time it takes for a philosopher to sleep, after eating<br>
-  - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Min times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br><br>
+  - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Minimum times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br><br>
   
   <b>The Program:</b><br>
   - Each philosopher is named by number, from <code>1</code>, to <code>number_of_philosophers</code><br>
@@ -28,17 +28,20 @@
   - Each <b>philosopher should be a thread</b>, and each <b>fork should be a mutex</b><br><br>
 
   Use of <a href="https://github.com/NicoleLehmeyer/LIBFT">libft</a> is permitted.<br><br>
+  Use a non-relinking Makefile, compiling with <code>cc</code> and flags: <code>-Wall</code>, <code>-Wextra</code> and <code>-Werror</code>
   No global variables permitted.<br><br>
   Program must be written in C, and <a href="https://github.com/NicoleLehmeyer/LIBFT/blob/main/subject/norme.pdf">Norminette</a> (42 organisational syntax) compliant, without seg fault/bus error/double free etc.
   <br>
   <br>
   <br>
   <b>Philosophers Method:</b><br>
-  1.  Process arguments: Return error if argument format is incorrect (ie. non-number, non-sign characters) or duplicates are present, handle '+' and '-', and handle if args are written in "", ie. "20 -3 80".<br>
-  2.  Initialise stacks & fill 'stack a'<br>
-  3.  PUSH SWAP SORT: (a) small sorts for 2 & 3 integers. (b) big sort (as written below) for > 3 integers<br>
-  4.  Free stacks<br>
-  <br>
+  1.  Check argument input (argv must be 5 or 6, and all arguments must be numbers/digits).<br>
+  2.  Initialise philosopher and fork array, and assign struct variables. Assign forks to each philosopher's left and right.<br>
+  3.  If there is one philosopher, it grabs a fork then dies.<br>
+  4.  If there are multiple philosophers, odd philosophers wait 50 ms until they begin the routine of events (prevent race condition).<br>
+  5.  Mutex on message printing to prevent jumbled messages.<br>
+  6.  In the meantime, endsim() runs two threads to continually check if any philosophers have died, or if all have eaten the minimum number of times.
+  7.  In event of error or end of sim, all existing threads are joined, mutexes destroyed and memory freed.<br>
   <br>
   <br>
 </p>
