@@ -58,7 +58,7 @@
   ie.: <code>./philo 4 410 200 200</code> (no philosopher should die)<br>
   ie.: <code>./philo 4 310 200 100</code> (philosopher should die)<br>
   - Do not test with more than 200 philosophers<br>
-  - Do not test with <code>time_to_die</code>code> or <code>time_to_sleep</code> set to values lower than 60 ms.<br>
+  - Do not test with <code>time_to_die</code> or <code>time_to_sleep</code> set to values lower than 60 ms.<br>
   <br>
   <br>
   <br>
