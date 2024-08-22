@@ -27,18 +27,6 @@
   - The messages must not be jumbled or mixed, and the message announcing that a philosopher has died must display no more than 10ms after death.<br>
   - Each <b>philosopher</b> should be a <b>thread</b>, and each <b>fork</b> should be a <b>mutex</b><br><br>
 
-
-  
-  The program must sort a list of integers in ascending order, using the allowed 'operations' to organise the integers across two stacks, <b>'stack a'</b> and <b>'stack b'</b>.<br><br>
-  The integers to be sorted must be firstly placed in 'stack a', with the first argument at the top of the stack. 'stack b' begins empty.<br><br>
-  <b>The sort is to be completed within the maximum number of operations:</b><br>
-  - Sort 3 values in <= 3 operations<br>
-  - Sort 5 values in <= 12 operations<br>
-  - Sort 100 values in <= 700 operations (for 100% project validation)<br>
-  - Sort 500 values in <= 5500 operations (for 100% project validation)<br><br>
-
-  <br>
-  List of operations executed must display in the standard output, each seperated by a newline character.<br><br>
   Use of <a href="https://github.com/NicoleLehmeyer/LIBFT">libft</a> is permitted.<br><br>
   No global variables permitted.<br><br>
   Program must be written in C, and <a href="https://github.com/NicoleLehmeyer/LIBFT/blob/main/subject/norme.pdf">Norminette</a> (42 organisational syntax) compliant, without seg fault/bus error/double free etc.
@@ -51,12 +39,6 @@
   3.  PUSH SWAP SORT: (a) small sorts for 2 & 3 integers. (b) big sort (as written below) for > 3 integers<br>
   4.  Free stacks<br>
   <br>
-  <b>Big Sort Method:</b><br>
-  1.  Push all but 3 integers to 'stack b'<br>
-  2.  Small sort on 'stack a' to create an ascending order<br>
-  3.  For each integer in 'stack b', assign: (1) target position - position in 'stack a' with value of next lowest value, (2) cost - lowest number of moves to get 'stack b' integer to its target position in 'stack a'.<br>
-  4.  Execute the sequence of operations for the 'stack b' integer with the 'cheapest' move number to get to its target position.<br>
-  5.  Repeat until there are no values in 'stack b', then ra/rra (dependent on if smallest int is in top or bottom half of the stack) until the smallest value is at the top of the stack.<br>
   <br>
   <br>
 </p>
@@ -71,13 +53,8 @@
   <b>Run program with checker:</b> <code>ARG="<integers seperated by ' ' character>"; ./push_swap $ARG | ./checker_mac $ARG</code><br>
   ie. <code>ARG="54 32 0 67 88 -1234 51 567"; ./push_swap $ARG | ./checker_mac $ARG</code><br>
   <br>
-  <b>My friend Nate created a fantastic push_swap checker, which can be used on my program with:</b> <code>./push_swap_tester.sh</code><br>
-  <b>Check out Nate's github <a href="https://github.com/redback0">here</a>.</b><br>
-  <br>
   You may also specify number of integers to test with and how many times you wish to test: <code>./push_swap_tester.sh <no. of integers> -r <no. of tests run></code><br>
   ie. <code>./push_swap_tester.sh 100 -r 200</code> (run program with 100 integers, 200 times)<br>
-  <br>
-  <b>**Ensure to <code>chmod 777</code> 'checker_Mac' and 'push_swap_tester.sh'**</b><br>
   <br>
   <br>
 </p>
