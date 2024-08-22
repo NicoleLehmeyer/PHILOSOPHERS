@@ -18,8 +18,7 @@
   - <code>time_to_die</code>(in milliseconds): If a philosopher hasn't started eating <code>time_to_die</code> ms since the beginning of their last meal/beginning of simulation, they die!<br>
   - <code>time_to_eat</code>(in milliseconds): Time it takes for a philosopher to eat a meal (with two forks)<br>
   - <code>time_to_sleep</code>(in milliseconds): Time it takes for a philosopher to sleep, after eating<br>
-  - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Min times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br>
-
+  - <code>number_of_times_each_philosopher_must_eat</code>(optional arg): Min times each philosopher must eat to end the simulation. Otherwise, the sim will either stop when a philosopher dies, or run infinitely if the conditions allow.<br><br>
   <b>The Program:</b><br><br>
   - Each philosopher is named by number, from '1', to <code>number_of_philosophers</code><br>
   - Philosopher '1' sits next to philosopher 'number of philosophers'. Other philosophers, 'N' sit next to philosopher 'N - 1' and 'N + 1.'<br>
