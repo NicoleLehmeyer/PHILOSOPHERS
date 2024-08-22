@@ -83,3 +83,36 @@ int main()
 	return (0);
 }
 */
+
+/*
+void	init_forks(t_simdata *simdata)
+{
+	int	i;
+
+	i = 0;
+	simdata->fork = malloc(sizeof(t_forks) * simdata->nbr_philos);
+	if (!simdata->fork)
+		ft_error("Unable to malloc forks array.", simdata);
+	while (i < simdata->nbr_philos)
+	{
+		if (pthread_mutex_init(&simdata->fork[i].f_lock, NULL) != 0)
+			ft_error("Unable to initialise fork mutex.", simdata);
+		else
+			simdata->fork[i].f_id = i;
+		i++;
+	}
+	i = 0;
+	while (i < simdata->nbr_philos)
+	{
+		simdata->philos[i].f_left = &simdata->fork[i].f_lock;
+		if (i == 0)
+			simdata->philos[i].f_right = &simdata->fork[simdata->nbr_philos - 1]
+				.f_lock;
+		else
+			simdata->philos[i].f_right = &simdata->fork[i - 1].f_lock;
+		if (pthread_create(&simdata->philos[i].p_tid, NULL, the_routine,
+				&simdata->philos[i]) != 0)
+			ft_error("Failed to create philo thread.\n", simdata);
+		i++;
+	}
+}*/

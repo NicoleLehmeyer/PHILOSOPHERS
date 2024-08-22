@@ -29,7 +29,7 @@ typedef struct s_forks
 	pthread_mutex_t	f_lock;
 }				t_forks;
 
-typedef struct 		s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				meals_eaten;
@@ -38,7 +38,7 @@ typedef struct 		s_philo
 	pthread_mutex_t	*f_left;
 	pthread_mutex_t	*f_right;
 	t_simdata		*simdata;
-}					t_philo;
+}				t_philo;
 
 typedef struct s_simdata
 {

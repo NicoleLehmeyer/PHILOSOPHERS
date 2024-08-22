@@ -2,7 +2,7 @@
 
 NAME = philo
 
-FLAGS = -Wall -Wextra -Werror -Iinclude -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -Iinclude #-fsanitize=address
 
 LIBFT_ARCHIVE = include/LIBFT/libft.a
 
@@ -18,7 +18,7 @@ OBJECTS = $(SOURCES:src/.c=obj/.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT_ARCHIVE)
-	gcc $(FLAGS) $(LIBFT_ARCHIVE) $(OBJECTS) -o $(NAME)
+	cc $(FLAGS) $(LIBFT_ARCHIVE) $(OBJECTS) -o $(NAME)
 
 obj/.o: src/.c
 	mkdir -p obj

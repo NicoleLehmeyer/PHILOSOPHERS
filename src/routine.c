@@ -68,7 +68,9 @@ void	eat(t_philo *philo)
 void	print_message(t_philo *philo, char *message)
 {
 	pthread_mutex_lock(&philo->simdata->message_lock);
-	printf("%lu%4d %s\n", get_timestamp(philo->simdata), philo->id, message);
+	if (philo->simdata->philo_dead == 0)
+		printf("%lu%4d %s\n", get_timestamp(philo->simdata),
+			philo->id, message);
 	pthread_mutex_unlock(&philo->simdata->message_lock);
 	return ;
 }

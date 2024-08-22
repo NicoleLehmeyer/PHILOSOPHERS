@@ -81,6 +81,8 @@ void	*full_check(void *arg)
 	int			i;
 
 	simdata = (t_simdata *)arg;
+	if (simdata->til_full == -1)
+		return (NULL);
 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
 	{
 		i = 0;
@@ -109,9 +111,11 @@ void	*death_check(void *arg)
 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
 	{
 		i = 0;
-		while (i < simdata->nbr_philos && simdata->philo_dead == 0)
+		while (i < simdata->nbr_philos && simdata->philo_dead == 0
+			&& simdata->nbr_philos != 1)
 		{
-			if (get_timestamp(simdata) - simdata->philos[i].time_last_eat >= simdata->time_die)
+			if (get_timestamp(simdata) - simdata->philos[i].time_last_eat
+				>= simdata->time_die)
 			{
 				print_message(&simdata->philos[i], "died");
 				simdata->philo_dead = 1;
@@ -119,7 +123,7 @@ void	*death_check(void *arg)
 			else
 				i++;
 		}
-		ft_usleep(50);
+		ft_usleep(5);
 	}
 	return (NULL);
 }
