@@ -23,7 +23,7 @@
   <b>The Program:</b><br>
   - Each philosopher is named by number, from <code>1</code>, to <code>number_of_philosophers</code><br>
   - Philosopher <code>1</code> sits next to philosopher <code>number of philosophers</code>. Other philosophers, <code>N</code> sit next to philosopher <code>N - 1</code> and <code>N + 1</code><br>
-  - The program output must be a log of philosopher events, formatted as <code>timestamp_in_ms X event</code>, where X is the philosopher name<br>
+  - The program output must be a log of philosopher events, formatted as <code>timestamp_in_ms X event</code>, where <code>X</code> is the philosopher name<br>
   - The messages must not be jumbled or mixed, and the message announcing that a philosopher has died must display no more than 10ms after death.<br><br>
 
 
