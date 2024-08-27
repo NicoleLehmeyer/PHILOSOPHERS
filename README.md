@@ -9,7 +9,7 @@
   <br>
   <br>
   <b>The Philosophers Problem:</b><br>
-  - One or more philosophers sit at a round table. To eat the big bowl of spaghetti in the middle of the table, they need two forks - the one they brought to the table, and another fork shared with an adjacent philosopher (one fork in each hand - left & right), to eat one big bowl of spaghetti in the centre of the table. (Maybe YOU only need one fork to eat spaghetti, but these philosophers are special and need two. If that idea still doesn't sit well with you, maybe imagine that the forks are chopsticks... These philosophers must have two to eat!<br>
+  - One or more philosophers sit at a round table. To eat the big bowl of spaghetti in the middle of the table, they need two forks - the one they brought to the table, and another fork shared with an adjacent philosopher (one fork in each hand - left & right), to eat one big bowl of spaghetti in the centre of the table. (Maybe YOU only need one fork to eat spaghetti, but these philosophers are special and need two. If that idea still doesn't sit well with you, maybe imagine that the forks are chopsticks... These philosophers must have two to eat!)<br>
   - When a philosopher has finished eating, they place both forks on the table. They alternatively <b>eat, sleep, then think</b>. They can only do one task at a time.<br>
   - The philosophers can starve to death if they haven't eaten for a specified period of time...<br><br>
 
