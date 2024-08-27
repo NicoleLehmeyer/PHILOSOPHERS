@@ -33,48 +33,6 @@ void	end_sim(t_simdata *simdata)
 	return ;
 }
 
-/*
-void	end_sim(t_simdata *simdata)
-{
-	if (pthread_create(&simdata->dead_checker, NULL, death_check,
-			&simdata) != 0)
-		ft_error("Filed to create dead_checker thread.\n", simdata);
-	if (pthread_create(&simdata->full_checker, NULL, full_check, &simdata) != 0)
-		ft_error("Filed to create full_checker thread.\n", simdata);
-	while (1)
-	{
-		if (simdata->philo_dead != 0 || simdata->all_full != 0)
-			return ;
-	}
-	return ;
-}
-*/
-
-// void	*full_check(void *arg)
-// {
-// 	t_simdata	*simdata;
-// 	int			i;
-
-// 	simdata = (t_simdata *)arg;
-// 	while (simdata->all_full == 0 && simdata->philo_dead == 0)
-// 	{
-// 		i = 0;
-// 		while (i < simdata->nbr_philos)
-// 		{
-// 			if (simdata->philos[i].meals_eaten < simdata->til_full)
-// 				break ;
-// 			i++;
-// 		}
-// 		if (i >= simdata->nbr_philos)
-// 		{
-// 			simdata->all_full = 1;
-// 			return (NULL);
-// 		}
-// 		ft_usleep(50);
-// 	}
-// 	return (NULL);
-// }
-
 void	*full_check(void *arg)
 {
 	t_simdata	*simdata;
