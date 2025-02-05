@@ -27,7 +27,7 @@
   - The messages must not be jumbled or mixed, and the message announcing that a philosopher has died must display no more than 10ms after death.<br>
   - Each <b>philosopher should be a thread</b>, and each <b>fork should be a mutex</b><br><br>
 
-  Use of <a href="https://github.com/NicoleLehmeyer/LIBFT">libft</a> is permitted.<br><br>
+  Use of <a href="https://github.com/NicoleLehmeyer/LIBFT">libft</a> is <b>NOT</b> permitted.<br><br>
   Use a non-relinking Makefile, compiling with <code>cc</code> and flags: <code>-Wall</code>, <code>-Wextra</code> and <code>-Werror</code>
   No global variables permitted.<br><br>
   Program must be written in C, and <a href="https://github.com/NicoleLehmeyer/LIBFT/blob/main/subject/norme.pdf">Norminette</a> (42 organisational syntax) compliant, without seg fault/bus error/double free etc.
